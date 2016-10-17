@@ -1,0 +1,22 @@
+#!usr/bin/env python
+
+#Imports
+from numpy import array, sqrt, linspace
+from scipy.integrate import odeint
+
+#I first define the psi array as a function.
+def func1(psi, x, epsilon):
+    return array([psi[1],(x**2 - epsilon)*psi[0]]) # f(x) for psi[0], psi[1]
+
+#Initial Conditions
+psi0_start = 1 # Arbitrarily
+def ic(epsilon, psi0_start): # pass in  epsilon, psi0_start, return array with psi0_start, psi0_end
+    return array([psi0_start, sqrt(16 - epsilon*psi0_start)])
+    
+#Definition of x vector [start, end, step]
+xspan = linspace(-4, 4 ,0.1)
+
+epsilon = 1
+sol = odeint(func1, ic, xspan)
+    
+    
