@@ -1,0 +1,8 @@
+.DS_Store
+parse.y copy
+parse.output
+parse.tab.h
+rcx1.bak
+rcx2.bak
+y_tab.c
+y_tab.h

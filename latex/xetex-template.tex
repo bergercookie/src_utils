@@ -1,0 +1,56 @@
+% use article styling for this document
+\documentclass{article}
+
+% enable system font access
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+
+% styling: Palatino (main text), Helvetica (stress), Code2000 (exotic text) and Asana Math (for math things)
+\setmainfont{Palatino Linotype}
+\newfontfamily{\maintext}{Palatino Linotype}
+\newfontfamily{\stressed}{Helvetica}
+\newfontfamily{\exotic}{Arial}
+\newfontfamily{\math}{Arial}
+\usepackage{fontspec}
+\setsansfont{Arial}
+\setdefaultlanguage{greek}
+% start of actual document
+\begin{document}
+
+\section{XeLaTeX documents}
+Από ότι συμπαιρένω αυτό θα πρέπει να είναι άμεσο!!
+ΝΑ παίζει ελληνικά χωρίς να γράφω κάτι άλλο
+XeLaTeX documents, which are processed using the {\stressed xelatex} program, use
+document source that is in {\stressed UTF-8} encoding, so that you are free to write
+LaTeX
+in any script that is supported by {\stressed Unicode}.
+
+\section{multilingual text}
+
+Multilingual text is relatively simple in XeLaTeX (when compared to other versions of
+TeX), while still leaving you in total control of the styling (compared to word
+processing programs like Microsoft Word or OpenOffice Writer)
+
+\subsection{English}
+TeXu
+English text is fairly obvious. We pick a main font that supports ascii and we're done!
+
+\subsection{Other languages}
+
+Languages that don't use the``Latin'' script are also not a problem, provided we remember to change
+to the correct {\stressed font}. For instance, we can write in Japanese (\exotic
+{``Καλημέρα'' τι κάνετε}), or in
+Thai ({\exotic ภาษาไทย}), or in Vietnamese ({\exotic tiếng Việt}), or any other number of languages.
+
+\subsection{Automatic font switching}
+
+XeLaTeX even lets you set up automatic font switching, but it's a bit more work because you need
+to tell it which fonts to use for which letters, so most people wouldn't consider it basic functionality.
+
+\section{Sectioning}
+
+We can also section our document so that it's easier for the reader to read through. This document
+consists of three sections, of which the second section has three subsections.
+
+\end{document}

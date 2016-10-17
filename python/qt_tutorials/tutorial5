@@ -1,0 +1,5 @@
+every QWidget emits signals
+signals can vary from clicked(), textChanged(), valueChanged(), ...
+
+We connect signals to slots
+a slot can be any callable we like, though there are some predefined ones

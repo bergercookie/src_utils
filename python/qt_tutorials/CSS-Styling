@@ -1,0 +1,24 @@
+CSS - Cascading Style Sheets
+for OK | Cancel button independent to OS -> Button Box
+
+Useful widgets:
+qTool Button -> Use it instead of the simple Push Button
+qTab Widget -> elegant and useful
+
+for CSS style -> Properties of Widget -> Style Sheets
+surround the CSS style with QName_of_Widget{} to implement it to the current widget only
+
+classic example for CSS styling:
+
+QFrame{
+background-color: qradialgradient(spread:repeat, cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0 rgba(0, 169, 255, 147), stop:0.497326 rgba(0, 0, 0, 147), stop:1 rgba(0, 169, 255, 147));
+}
+
+QToolButton {
+background-color : transparent;
+border : none;
+}
+
+QToolButton:checked {
+background-color:rgb[193, 210, 238];
+}

@@ -1,0 +1,10 @@
+Use Modules for
+- Global variable declaration
+- Subroutine, function declarations
+- New type definitions
+
+For now on I put all my subroutines, functions, derived types inside modules!
+Compiling a module creates a .o AND a .mod file
+The module must be compiled before any program, subroutine Uses it!
+
+There is a save statement after the variable declarations if you want to use them as Global variables
