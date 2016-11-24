@@ -1,0 +1,86 @@
+#! /bin/sh
+# /etc/init.d/gogs-server
+
+### BEGIN INIT INFO
+# Provides:          gogs-server
+# Required-Start: $local_fs
+# Required-Stop: $local_fs
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: gogs-server
+# Description:       gogs-server daemon
+### END INIT INFO
+
+# Wed Nov 23 00:48:28 EET 2016, Nikos Koukis
+
+checkexitstatus()
+{
+    exit_status=$1
+    if [ ! "${exit_status}" ]; then
+        printf "Error occurred! Exited with %s\n" "${exit_status}"
+    else
+        printf "%s\n" "$2"
+    fi
+    return ${exit_status}
+}
+
+start_daemon()
+{
+    echo "Starting gogs-server..."
+    su - git -c "/home/git/gogs/gogs web > /dev/null 2>&1 &"
+    checkexitstatus $? "gogs-server is alive."
+    return $? # exit with the checkexitstatus status
+}
+
+status()
+{
+    msg="gogs-server status: "
+    status=
+    if [ "$(pgrep gogs)" -eq 0 ]; then
+        msg="${msg} Running."
+        status=0
+    else
+        msg="${msg} Stopped."
+        status=1
+    fi
+    echo ${msg}
+    return ${status}
+}
+
+stop_daemon()
+{
+    echo "Stopping gogs-server..."
+    killall -q gogs
+    checkexitstatus $? "gogs-server is dead."
+    return $? # exit with the checkexitstatus status
+}
+
+restart_daemon()
+{
+    stop_daemon
+    start_daemon
+    return $?
+}
+
+
+# The following part carries out specific functions depending on arguments.
+case "$1" in
+    start)
+        start_daemon
+        ;;
+    stop)
+        stop_daemon
+        ;;
+    status)
+        status
+        ;;
+    restart)
+        restart_daemon
+        ;;
+    *)
+        echo "Usage: /etc/init.d/gogs-server {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
